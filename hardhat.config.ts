@@ -106,7 +106,7 @@ const config: HardhatUserConfig = {
       url: 'https://testnet.aurora.dev',
       chainId: 1313161555,
       accounts: [`0x${process.env.AURORA_PRIVATE_KEY}`],
-      gasPrice: 120 * 1000000000,
+      // gasPrice: 120 * 1000000000,
       live: false,
       tags: ["staging"],
       saveDeployments: true,
