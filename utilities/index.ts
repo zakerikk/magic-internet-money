@@ -43,7 +43,8 @@ export enum ChainId {
   Fantom = 250,
   Arbitrum = 42161,
   Avalanche = 43114,
-  Boba = 288
+  Boba = 288,
+  AuroraTestNet = 1313161555,
 }
 
 export const setDeploymentSupportedChains = (supportedChains: string[], deployFunction: DeployFunction) => {
