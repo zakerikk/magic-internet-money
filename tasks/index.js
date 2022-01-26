@@ -1,6 +1,17 @@
 const { task } = require("hardhat/config");
 const fs = require('fs')
 
+task(
+  "AuroraOracle",
+  "Prints the current price of AURORA tokens",
+  async (_, { ethers }) => {
+    const AuroraOracle = await ethers.getContractAt("AuroraOracle", "0xD83aD9223a425451222bdC40Bbe7d1Cd6bA6378E");
+
+    console.log("1: ", (await AuroraOracle.get(ethers.constants.HashZero)).toString());
+    console.log("2 ", (await AuroraOracle.latestAnswer()).toString());
+  }
+);
+
 task("accounts", "Prints the list of accounts", require("./accounts"))
 
 function getSortedFiles(dependenciesGraph) {
