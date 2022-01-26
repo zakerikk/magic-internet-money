@@ -5,10 +5,10 @@ task(
   "AuroraOracle",
   "Prints the current price of AURORA tokens",
   async (_, { ethers }) => {
-    const AuroraOracle = await ethers.getContractAt("AuroraOracle", "0xD83aD9223a425451222bdC40Bbe7d1Cd6bA6378E");
+    const AuroraOracle = await ethers.getContractAt("AuroraOracle", "0xf61cE85F2a28972fF2B7F44ABcf06bcB80587985");
 
     console.log("1: ", (await AuroraOracle.get(ethers.constants.HashZero)).toString());
-    console.log("2 ", (await AuroraOracle.latestAnswer()).toString());
+    // console.log("2 ", (await AuroraOracle.latestAnswer()).toString());
   }
 );
 

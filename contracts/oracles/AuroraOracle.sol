@@ -14,7 +14,7 @@ interface IERC20 {
 }
 
 contract AuroraOracle is IOracle {
-    IAggregator constant public AURORAUSD = IAggregator(0x80d2415FbE8B1B1650d984EacFb4720DC8e9dA16);
+    IAggregator constant public AURORAUSD = IAggregator(0x8Cda9621b6D0401EBFaf3c71bc28BFc9fE99CdE5);
 
     // Calculates the lastest exchange rate
     // Uses both divide and multiply only for tokens not supported directly by Flux, for example MKR/USD
