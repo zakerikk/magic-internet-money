@@ -8,6 +8,22 @@ task("AuroraOracle", "Prints the current price of AURORA tokens")
     console.log("latest exchange rate: ", (await AuroraOracle.get(ethers.constants.HashZero)).toString())
   });
 
+// task("CauldronV2", "Prints the withdrawFees")
+//   .setAction(async taskArgs => {
+//     const CauldronV2 = await ethers.getContractAt("CauldronV2", "0xb115C408B45E8416b06E373AD68CD619F08ca018");
+
+//     console.log("latest exchange rate: ", (await CauldronV2.withdrawFees()).toString())
+//   });
+
+task("MagicInternetMoney", "burn method")
+  .setAction(async taskArgs => {
+    const MagicInternetMoney = await ethers.getContractAt("MagicInternetMoney", "0xded1340A337bDd69aecD7e696D610E9D2F49767f");
+
+    const result = await MagicInternetMoney.burn(0)
+
+    console.log('await MagicInternetMoney.burn(0)', result)
+  });
+
 task("accounts", "Prints the list of accounts", require("./accounts"))
 
 function getSortedFiles(dependenciesGraph) {
