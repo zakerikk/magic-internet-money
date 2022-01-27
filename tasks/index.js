@@ -10,9 +10,16 @@ task("AuroraOracle", "Prints the current price of AURORA tokens")
 
 task("CauldronV2", "check test method")
   .setAction(async taskArgs => {
-    const CauldronV2 = await ethers.getContractAt("CauldronV2", "0x78225d8AfdBBAE5BcbF5cc275FE436bD7b8864FE");
+    const CauldronV2 = await ethers.getContractAt("CauldronV2", "0xFA67878cF12101948B865F01cf8f83c8EB3446B7");
 
     console.log("result: ", (await CauldronV2.test()).toString())
+  });
+
+task("BentoBoxV1", "check test method")
+  .setAction(async taskArgs => {
+    const BentoBoxV1 = await ethers.getContractAt("BentoBoxV1", "0x1A32B83332A9b967c48853A7aC0906392Dff6be3");
+
+    console.log("result: ", (await BentoBoxV1.test()).toString())
   });
 
 task("MagicInternetMoney", "burn method")
