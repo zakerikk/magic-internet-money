@@ -3,13 +3,8 @@ const fs = require('fs')
 
 task("AuroraOracle", "Prints the current price of AURORA tokens")
   .setAction(async taskArgs => {
-    const AuroraOracle = await ethers.getContractAt("AuroraOracle", "0xf61cE85F2a28972fF2B7F44ABcf06bcB80587985");
+    const AuroraOracle = await ethers.getContractAt("AuroraOracle", "0xDf42bA177094D3438FB193644d27A120DEEaF48F");
 
-    console.log('AuroraOracle', AuroraOracle)
-    const IAggregator = await AuroraOracle.AURORAUSD()
-
-
-    console.log("IAggregator: ", IAggregator.toString());
     console.log("latest exchange rate: ", (await AuroraOracle.get(ethers.constants.HashZero)).toString())
   });
 
