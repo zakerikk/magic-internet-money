@@ -11,7 +11,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 
   await deploy("CauldronV2", {
     from: deployer,
-    args: ["0x1A32B83332A9b967c48853A7aC0906392Dff6be3", "0xded1340A337bDd69aecD7e696D610E9D2F49767f"],
+    args: ["0xcF9bBc99342a7704D61b2A06597aEC98D76e9155", "0xded1340A337bDd69aecD7e696D610E9D2F49767f"],
     log: true,
     deterministicDeployment: false,
   });

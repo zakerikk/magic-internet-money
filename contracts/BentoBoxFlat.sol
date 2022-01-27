@@ -1081,7 +1081,7 @@ contract BentoBoxV1 is MasterContractManager, BoringBatchable {
     }
 
     function test() public pure returns (string memory) {
-        return "BentoBoxV1";
+        return "log: BentoBoxV1";
     }
 
     /// @notice The actual process of yield farming. Executes the strategy of `token`.

@@ -8,7 +8,7 @@ import { BentoBoxV1 } from "../typechain";
 const ParametersPerChain = {
   [ChainId.AuroraTestNet]: {
     weth: "0x9D29f395524B3C817ed86e2987A14c1897aFF849",
-    owner: "0x9D29f395524B3C817ed86e2987A14c1897aFF849",
+    owner: xMerlin,
   },
 };
 
@@ -28,6 +28,10 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   });
 
   const BentoBoxV1 = await ethers.getContract<BentoBoxV1>("BentoBoxV1");
+
+  if ((await BentoBoxV1.owner()) != parameters.owner && network.name !== "hardhat") {
+    await BentoBoxV1.transferOwnership(parameters.owner, true, false);
+  }
 };
 
 export default func;
