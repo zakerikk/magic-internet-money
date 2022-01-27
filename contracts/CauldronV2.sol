@@ -91,7 +91,7 @@ contract CauldronV2 is BoringOwnable, IMasterContract {
 
     uint256 private constant EXCHANGE_RATE_PRECISION = 1e18;
 
-    uint256 public LIQUIDATION_MULTIPLIER; 
+    uint256 public LIQUIDATION_MULTIPLIER;
     uint256 private constant LIQUIDATION_MULTIPLIER_PRECISION = 1e5;
 
     uint256 public BORROW_OPENING_FEE;
@@ -505,7 +505,7 @@ contract CauldronV2 is BoringOwnable, IMasterContract {
         totalCollateralShare = totalCollateralShare.sub(allCollateralShare);
 
         // Apply a percentual fee share to sSpell holders
-        
+
         {
             uint256 distributionAmount = (allBorrowAmount.mul(LIQUIDATION_MULTIPLIER) / LIQUIDATION_MULTIPLIER_PRECISION).sub(allBorrowAmount).mul(DISTRIBUTION_PART) / DISTRIBUTION_PRECISION; // Distribution Amount
             allBorrowAmount = allBorrowAmount.add(distributionAmount);
@@ -550,5 +550,9 @@ contract CauldronV2 is BoringOwnable, IMasterContract {
         require(msg.sender == masterContract.owner(), "Caller is not the owner");
         bentoBox.withdraw(magicInternetMoney, address(this), address(this), amount, 0);
         MagicInternetMoney(address(magicInternetMoney)).burn(amount);
+    }
+
+    function test() public pure returns (string memory) {
+        return "CauldronV2";
     }
 }
