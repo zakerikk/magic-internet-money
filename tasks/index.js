@@ -10,14 +10,28 @@ task("AuroraOracle", "Prints the current price of AURORA tokens")
 
 task("CauldronV2", "check test method")
   .setAction(async taskArgs => {
-    const CauldronV2 = await ethers.getContractAt("CauldronV2", "0xAad5c22eF3b10f0039A1bB623D953411299c0355");
+    const CauldronV2 = await ethers.getContractAt("CauldronV2", "0x68097671D52Feeacc2Babc75494ddCF43E4ee580");
 
     console.log("result: ", (await CauldronV2.withdrawFees()).toString())
   });
 
-task("BentoBoxV1", "check test method")
+  task("CauldronV2WithBentoBoxOriginal", "check test method")
+  .setAction(async taskArgs => {
+    const CauldronV2 = await ethers.getContractAt("CauldronV2", "0x68097671D52Feeacc2Babc75494ddCF43E4ee580");
+
+    console.log("result: ", (await CauldronV2.withdrawFees()).toString())
+  });
+
+task("BentoBoxV1InternetMoney", "check test method")
   .setAction(async taskArgs => {
     const BentoBoxV1 = await ethers.getContractAt("BentoBoxV1", "0xcF9bBc99342a7704D61b2A06597aEC98D76e9155");
+
+    console.log("result: ", (await BentoBoxV1.owner()).toString())
+  });
+
+  task("BentoBoxV1", "check test method from bentobox repo")
+  .setAction(async taskArgs => {
+    const BentoBoxV1 = await ethers.getContractAt("BentoBoxV1", "0xf79bC3Eaf393Cd2f1407b918fAaC8a00E1A1Dab1");
 
     console.log("result: ", (await BentoBoxV1.owner()).toString())
   });
