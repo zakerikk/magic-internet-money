@@ -60,5 +60,18 @@ const deployFunction: DeployFunction = async function (hre: HardhatRuntimeEnviro
 
 export default deployFunction;
 
+if (network.name !== "hardhat") {
+  deployFunction.skip = ({ getChainId }) =>
+    new Promise((resolve, reject) => {
+      try {
+        getChainId().then((chainId) => {
+          resolve(chainId !== "1313161555");
+        });
+      } catch (error) {
+        reject(error);
+      }
+    });
+}
+
 deployFunction.tags = ["AuroraCauldron"];
 deployFunction.dependencies = [];
