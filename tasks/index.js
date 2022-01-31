@@ -8,25 +8,31 @@ task("AuroraOracle", "Prints the current price of AURORA tokens")
     console.log("latest exchange rate: ", (await AuroraOracle.get(ethers.constants.HashZero)).toString())
   });
 
+task("AURORA/USDT_create_pair", "create pair")
+  .setAction(async taskArgs => {
+    const UniswapV2Factory = await ethers.getContractAt("UniswapV2Factory", "0x60913758635b54e6C9685f92201A5704eEe74748");
+
+    await UniswapV2Factory.createPair(
+      "0xaDeE31e4643D8891CaC9328B93BE002373428947", // AURORA
+      "0xfa1Ee6A11A8Ac851dEd1EF449878d1eE20D135EC", // USDT
+    )
+  });
+
+task("AURORA/USDT_get_pair", "get pair")
+  .setAction(async taskArgs => {
+    const UniswapV2Factory = await ethers.getContractAt("UniswapV2Factory", "0x60913758635b54e6C9685f92201A5704eEe74748");
+
+    console.log("result: ", (await UniswapV2Factory.getPair(
+      "0xaDeE31e4643D8891CaC9328B93BE002373428947", // AURORA
+      "0xfa1Ee6A11A8Ac851dEd1EF449878d1eE20D135EC", // USDT
+    )))
+  });
+
 task("CauldronV2", "check test method")
   .setAction(async taskArgs => {
     const CauldronV2 = await ethers.getContractAt("CauldronV2", "0xAad5c22eF3b10f0039A1bB623D953411299c0355");
 
     console.log("result: ", (await CauldronV2.withdrawFees()))
-  });
-
-task("CauldronV2WithBentoBoxOriginal", "check test method")
-  .setAction(async taskArgs => {
-    const CauldronV2 = await ethers.getContractAt("CauldronV2", "0x68097671D52Feeacc2Babc75494ddCF43E4ee580");
-
-    console.log("result: ", (await CauldronV2.withdrawFees()).toString())
-  });
-
-task("BentoBoxV1InternetMoney", "check test method")
-  .setAction(async taskArgs => {
-    const BentoBoxV1 = await ethers.getContractAt("BentoBoxV1", "0xcF9bBc99342a7704D61b2A06597aEC98D76e9155");
-
-    console.log("result: ", (await BentoBoxV1.owner()).toString())
   });
 
 task("BentoBoxV1", "check test method from bentobox repo")
