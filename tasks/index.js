@@ -48,18 +48,11 @@ task("MIM/AURORA_get_pair", "get pair")
     )))
   });
 
-task("CauldronV2", "check test method")
+task("CauldronV2", "check withdrawFees method")
   .setAction(async taskArgs => {
     const CauldronV2 = await ethers.getContractAt("CauldronV2", "0xAad5c22eF3b10f0039A1bB623D953411299c0355");
 
     console.log("result: ", (await CauldronV2.withdrawFees()))
-  });
-
-task("BentoBoxV1", "check test method from bentobox repo")
-  .setAction(async taskArgs => {
-    const BentoBoxV1 = await ethers.getContractAt("BentoBoxV1", "0xf79bC3Eaf393Cd2f1407b918fAaC8a00E1A1Dab1");
-
-    console.log("result: ", (await BentoBoxV1.owner()).toString())
   });
 
 task("MagicInternetMoney", "burn method")
@@ -70,6 +63,11 @@ task("MagicInternetMoney", "burn method")
 
     console.log('await MagicInternetMoney.burn(0)', result)
   });
+
+
+
+
+
 
 task("accounts", "Prints the list of accounts", require("./accounts"))
 
