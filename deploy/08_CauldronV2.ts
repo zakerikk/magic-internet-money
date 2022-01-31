@@ -1,6 +1,7 @@
 import { HardhatRuntimeEnvironment } from 'hardhat/types';
 import { DeployFunction } from 'hardhat-deploy/types';
 import { ethers, network } from "hardhat";
+import { CauldronV2 } from "../typechain";
 
 
 const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
@@ -15,6 +16,10 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     log: true,
     deterministicDeployment: false,
   });
+
+  const CauldronV2 = await ethers.getContract<CauldronV2>("CauldronV2");
+
+  await CauldronV2.setFeeTo(deployer)
 };
 
 export default func;
