@@ -30,7 +30,6 @@ const deployFunction: DeployFunction = async function (hre: HardhatRuntimeEnviro
   const oracle = "0xDf42bA177094D3438FB193644d27A120DEEaF48F"; // Aurora/USD oracle
   const oracleData = "0x0000000000000000000000000000000000000000";
 
-    //let oracle = "0x2Be431EE7E74b1CB7CfA16Fc90578EF42eF361B0"
   let INTEREST_CONVERSION = 1e18/(365.25*3600*24)/100
   let interest = parseInt(String(3 * INTEREST_CONVERSION))
   const OPENING_CONVERSION = 1e5/100
@@ -57,7 +56,6 @@ const deployFunction: DeployFunction = async function (hre: HardhatRuntimeEnviro
     });
 
   }
-
 };
 
 export default deployFunction;

@@ -9,6 +9,14 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 
   const { deployer } = await getNamedAccounts();
 
+  await deploy("AuroraProxyOracle", {
+    from: deployer,
+    args: [],
+    log: true,
+    contract: "ProxyOracle",
+    deterministicDeployment: false,
+  });
+
   await deploy("AuroraOracle", {
     from: deployer,
     log: true,

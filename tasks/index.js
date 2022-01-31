@@ -28,6 +28,26 @@ task("AURORA/USDT_get_pair", "get pair")
     )))
   });
 
+task("MIM/AURORA_create_pair", "create pair")
+  .setAction(async taskArgs => {
+    const UniswapV2Factory = await ethers.getContractAt("UniswapV2Factory", "0x60913758635b54e6C9685f92201A5704eEe74748");
+
+    console.log("result: ", (await UniswapV2Factory.createPair(
+      "0xcDc61EDF7F1E2D89dd22F39eF442a29018AA5d82", //MIM
+      "0xaDeE31e4643D8891CaC9328B93BE002373428947", // AURORA
+    )))
+  });
+
+task("MIM/AURORA_get_pair", "get pair")
+  .setAction(async taskArgs => {
+    const UniswapV2Factory = await ethers.getContractAt("UniswapV2Factory", "0x60913758635b54e6C9685f92201A5704eEe74748");
+
+    console.log("result: ", (await UniswapV2Factory.getPair(
+      "0xcDc61EDF7F1E2D89dd22F39eF442a29018AA5d82", //MIM
+      "0xaDeE31e4643D8891CaC9328B93BE002373428947", // AURORA
+    )))
+  });
+
 task("CauldronV2", "check test method")
   .setAction(async taskArgs => {
     const CauldronV2 = await ethers.getContractAt("CauldronV2", "0xAad5c22eF3b10f0039A1bB623D953411299c0355");
